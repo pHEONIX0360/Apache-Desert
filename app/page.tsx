@@ -13,8 +13,8 @@ export default function Home() {
           playsInline
         />
         <div className={styles.overlay}>
-          <h1 className={styles.headline}>Your Silica Solutions Partner</h1>
-          <p className={styles.subheadline}>Sourcing from China, delivering quality to the USA</p>
+          <h1 className={styles.headline}>Your Desicant Solutions Partner</h1>
+          
         </div>
       </div>
       {/* About Us Section */}
@@ -30,7 +30,7 @@ export default function Home() {
             />
             <div className={styles.aboutText}>
               <p>
-                This company is a proud <b>veteran initiative</b>, dedicated to bridging the gap between top-quality silica manufacturers in China and customers in the USA. Our mission is to deliver excellence, reliability, and service with the integrity and commitment that defines our veteran roots.
+                This company is a proud <b>veteran owned</b>, dedicated to bridging the gap between top-quality silica manufacturers in China and customers in the USA. Our mission is to deliver excellence, reliability, and service with the integrity and commitment that defines our veteran roots.
               </p>
             </div>
             <img
