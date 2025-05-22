@@ -541,6 +541,7 @@ a.secondary {
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0.5rem 0 0.2rem 0;
+  color: #111;
 }
 .productCard p {
   color: #27ae60;
@@ -648,7 +649,7 @@ a.secondary {
   margin-top: 2rem;
 }
 .testimonialCard {
-  background: #fafbfc;
+  background: #f3f3f3;
   border-radius: 1rem;
   box-shadow: 0 2px 12px rgba(39,174,96,0.06);
   padding: 2rem 2.5rem;
@@ -677,4 +678,168 @@ a.secondary {
   .heroSubheadline {
     font-size: 1.1rem;
   }
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(39,174,96,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 70px;
+  font-family: var(--font-geist-sans, sans-serif);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+}
+
+.navCenter {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.navLink {
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.navLink:hover, .navLink:focus {
+  color: #27ae60;
+  border-bottom: 2px solid #27ae60;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.locationBtn {
+  display: flex;
+  align-items: center;
+  background: #eafaf1;
+  color: #27ae60;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.locationBtn:hover {
+  background: #d4f5e6;
+}
+.locationIcon {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+.locationText {
+  font-size: 1rem;
+}
+.iconBtn {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+.iconBtn:hover {
+  background: #eafaf1;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 12px;
+    height: 60px;
+  }
+  .navCenter {
+    gap: 1.2rem;
+  }
+  .logo {
+    height: 38px;
+    width: 38px;
+  }
+}
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 0 4px;
+    align-items: flex-start;
+  }
+  .navCenter {
+    width: 100%;
+    justify-content: space-around;
+    margin: 8px 0;
+  }
+  .navRight {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 0.7rem;
+  }
+}
+
+/* --- Cart and Login Button Styles --- */
+.cartBtn, .loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1.5px solid #27ae60;
+  color: #27ae60;
+  border-radius: 24px;
+  padding: 6px 18px 6px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.cartBtn:hover, .loginBtn:hover {
+  background: #eafaf1;
+  border-color: #219150;
+  color: #219150;
+}
+.cartBadge {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: #ff4d7a;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px #ff4d7a44;
+  pointer-events: none;
+}
+.loginText {
+  margin-left: 6px;
+  font-size: 1rem;
+  font-weight: 600;
 }

@@ -1,68 +1,64 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
-const GREEN = "#27ae60";
+import styles from "./page.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [location, setLocation] = useState("Select Location");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (typeof window !== "undefined" && "geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+          );
+          const data = await res.json();
+          if (data && data.address) {
+            setLocation(
+              data.address.city ||
+              data.address.town ||
+              data.address.village ||
+              data.address.state ||
+              data.display_name
+            );
+          }
+        } catch {
+          setLocation("Location Unavailable");
+        }
+      }, () => setLocation("Location Unavailable"));
+    }
   }, []);
 
   return (
-    <nav
-      style={{
-        width: "100%",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 10,
-        background: scrolled ? "transparent" : "#e0e0e0",
-        backdropFilter: scrolled ? "blur(6px)" : undefined,
-        WebkitBackdropFilter: scrolled ? "blur(6px)" : undefined,
-        transition: "background 0.3s, backdrop-filter 0.3s",
-        padding: "13px 38px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        fontWeight: 700,
-        fontSize: "1.2rem",
-        color: scrolled ? GREEN : "#111",
-        letterSpacing: "1px",
-        boxShadow: "0 2px 16px #27ae6044",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <img src="/Images/Logo 7.png" alt="Company Logo" style={{ height: 50, width: "auto", display: "block" }} />
+    <nav className={styles.navbar}>
+      <div className={styles.navLeft}>
+        <Link href="/">
+          <Image src="/logo.png" alt="Logo" width={48} height={48} className={styles.logo} />
+        </Link>
       </div>
-      <div style={{ display: "flex", gap: "2rem" }}>
-        {[
-          { href: "/", label: "Home" },
-          { href: "#about", label: "About" },
-          { href: "/products", label: "Products" },
-          { href: "#contact", label: "Contact" },
-          { href: "#shop", label: "Shop" },
-          { href: "#login", label: "Login" },
-        ].map(link => (
-          <a
-            key={link.href}
-            href={link.href}
-            style={{
-              color: scrolled ? GREEN : "#111",
-              textShadow: scrolled ? undefined : "0 0 8px #fff",
-              transition: "color 0.2s, text-shadow 0.2s",
-            }}
-            onMouseOver={e => (e.currentTarget.style.color = GREEN)}
-            onMouseOut={e => (e.currentTarget.style.color = scrolled ? GREEN : "#111")}
-          >
-            {link.label}
-          </a>
-        ))}
+      <div className={styles.navCenter}>
+        <Link href="/" className={styles.navLink}>Home</Link>
+        <Link href="/products" className={styles.navLink}>Products</Link>
+        <Link href="/about" className={styles.navLink}>About</Link>
+        <Link href="/contact" className={styles.navLink}>Contact</Link>
+        <Link href="/shop" className={styles.navLink}>Shop</Link>
+      </div>
+      <div className={styles.navRight}>
+        <button className={styles.locationBtn}>
+          <span className={styles.locationIcon}>📍</span>
+          <span className={styles.locationText}>{location}</span>
+        </button>
+        <button className={styles.cartBtn} aria-label="Cart">
+          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span className={styles.cartBadge}>0</span>
+        </button>
+        <button className={styles.loginBtn} aria-label="Login">
+          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M21 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/></svg>
+          <span className={styles.loginText}>Login</span>
+        </button>
       </div>
     </nav>
   );
