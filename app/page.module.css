@@ -256,12 +256,6 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
-
 /* --- Landing Page Video Background Styles --- */
 .landingContainer {
   position: relative;
@@ -499,7 +493,7 @@ a.secondary {
 
 /* --- Products Section --- */
 .productsSection {
-  background: #fafbfc;
+  background: #fff;
   padding: 64px 0 48px 0;
   text-align: center;
 }
@@ -842,4 +836,44 @@ a.secondary {
   margin-left: 6px;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.activeNavLink {
+  color: #27ae60;
+  border-bottom: 2px solid #27ae60;
+}
+
+/* --- Dessicant Carousel Styles --- */
+.carouselContainer {
+  width: 100vw;
+  margin: 32px 0 48px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 240px;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  z-index: 2;
+}
+.carouselImage {
+  width: 30vw;
+  max-width: 30vw;
+  min-width: 220px;
+  height: auto;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(39,174,96,0.10);
+  opacity: 0;
+  transition: opacity 0.7s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.carouselImageActive {
+  opacity: 1;
+  position: relative;
+  z-index: 2;
 }

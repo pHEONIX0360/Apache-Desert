@@ -1,11 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
   const [location, setLocation] = useState("Select Location");
+  const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window !== "undefined" && "geolocation" in navigator) {
@@ -40,7 +42,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className={styles.navCenter}>
-        <Link href="/" className={styles.navLink}>Home</Link>
+        <Link href="/" className={`${styles.navLink} ${pathname === "/" ? styles.activeNavLink : ""}`}>Home</Link>
         <Link href="/products" className={styles.navLink}>Products</Link>
         <Link href="/about" className={styles.navLink}>About</Link>
         <Link href="/contact" className={styles.navLink}>Contact</Link>

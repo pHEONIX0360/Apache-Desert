@@ -1,5 +1,7 @@
 import styles from "./page.module.css";
 import NewsletterForm from "./NewsletterForm";
+import Link from "next/link";
+import DessicantCarousel from "./DessicantCarousel";
 
 export default function Home() {
   return (
@@ -22,7 +24,9 @@ export default function Home() {
             </p>
             <div className={styles.heroCtas}>
               <button className={styles.primaryCta}>Shop Now</button>
-              <button className={styles.secondaryCta}>Explore Products</button>
+              <Link href="/products" className={styles.secondaryCta}>
+                Explore Products
+              </Link>
             </div>
           </div>
         </div>
@@ -77,6 +81,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className={styles.carouselSection}>
+        <DessicantCarousel />
+      </section>
 
       {/* How It Works Section */}
       <section className={styles.howItWorksSection}>
@@ -118,11 +125,11 @@ export default function Home() {
         <h2 className={styles.sectionHeadline}>Customer Testimonials</h2>
         <div className={styles.testimonialsGrid}>
           <div className={styles.testimonialCard}>
-            <p>“Excellent quality and quick delivery!”</p>
+            <p>&quot;Excellent quality and quick delivery!&quot;</p>
             <span>– Ravi K.</span>
           </div>
           <div className={styles.testimonialCard}>
-            <p>“Best desiccants we&#39;ve used in our packaging line.”</p>
+            <p>&quot;Best desiccants we&#39;ve used in our packaging line.&quot;</p>
             <span>– PharmaCo Ltd.</span>
           </div>
         </div>
