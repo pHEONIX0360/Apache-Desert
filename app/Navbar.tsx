@@ -36,7 +36,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navLeft}>
         <Link href="/">
-          <Image src="/logo.png" alt="Logo" width={48} height={48} className={styles.logo} />
+          <Image src="/Images/Logo 1.png" alt="Logo" width={48} height={48} className={styles.logo} />
         </Link>
       </div>
       <div className={styles.navCenter}>
