@@ -1,7 +1,6 @@
 import styles from "./page.module.css";
 import NewsletterForm from "./NewsletterForm";
 import Link from "next/link";
-import DessicantCarousel from "./DessicantCarousel";
 
 export default function Home() {
   return (
@@ -80,9 +79,6 @@ export default function Home() {
             <button className={styles.productButton}>View Product</button>
           </div>
         </div>
-      </section>
-      <section className={styles.carouselSection}>
-        <DessicantCarousel />
       </section>
 
       {/* How It Works Section */}
