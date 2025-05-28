@@ -885,12 +885,13 @@ a.secondary {
 }
 
 .contactSection {
-  min-height: 60vh;
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
-  padding: 48px 0;
+  padding: 0;
 }
 .contactCard {
   background: #fafbfc;

@@ -61,19 +61,19 @@ export default function Home() {
         <h2 className={styles.sectionHeadline}>Featured Products</h2>
         <div className={styles.productsGrid}>
           <div className={styles.productCard}>
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Silica Gel Packets" />
+            <img src="/Images/silica.webp" alt="Silica Gel Packets" />
             <h3>Silica Gel Packets</h3>
             <p>$9.99 / 100pcs</p>
             <button className={styles.productButton}>View Product</button>
           </div>
           <div className={styles.productCard}>
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Clay Desiccant Bags" />
+            <img src="/Images/bag.webp" alt="Clay Desiccant Bags" />
             <h3>Clay Desiccant Bags</h3>
             <p>$12.99 / 50pcs</p>
             <button className={styles.productButton}>View Product</button>
           </div>
           <div className={styles.productCard}>
-            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80" alt="Activated Carbon Desiccant" />
+            <img src="/Images/5g-Odor-Moisture-Absorbing-Packets-Activated-Charcoal-Montmorillonite-Clay-Desiccant.avif" alt="Activated Carbon Desiccant" />
             <h3>Activated Carbon Desiccant</h3>
             <p>$14.99 / 50pcs</p>
             <button className={styles.productButton}>View Product</button>
@@ -149,7 +149,7 @@ export default function Home() {
             <ul>
               <li>Email: <a href="mailto:info@desertsolutions.com">info@desertsolutions.com</a></li>
               <li>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></li>
-              <li>Location: USA & China</li>
+              <li>Location: USA</li>
             </ul>
           </div>
           <div className={styles.footerColumn}>
