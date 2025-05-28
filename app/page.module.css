@@ -883,3 +883,56 @@ a.secondary {
   margin: 0;
   padding: 0;
 }
+
+.contactSection {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 48px 0;
+}
+.contactCard {
+  background: #fafbfc;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(39,174,96,0.10);
+  padding: 3rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.contactIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.contactHeadline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
+}
+.contactText {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+.contactEmail {
+  color: #27ae60;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+.contactEmail:hover {
+  color: #219150;
+  text-decoration: underline;
+}
+.contactNote {
+  font-size: 0.98rem;
+  color: #888;
+  margin-top: 1.5rem;
+}
