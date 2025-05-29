@@ -15,6 +15,13 @@ export default function CustomisedProducts() {
 
   return (
     <section className={styles.customFormSection}>
+      {/* Floating particles */}
+      <div className={styles.floatingParticle}></div>
+      <div className={styles.floatingParticle}></div>
+      <div className={styles.floatingParticle}></div>
+      <div className={styles.floatingParticle}></div>
+      <div className={styles.floatingParticle}></div>
+
       <div className={styles.customFormCard}>
         <div className={styles.customFormHeroIcon}>📦✨</div>
         <h1 className={styles.customFormHeadline}>Request Customised Desiccant Products</h1>
