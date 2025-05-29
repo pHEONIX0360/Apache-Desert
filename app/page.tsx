@@ -79,7 +79,7 @@ export default function Home() {
             />
             <div className={styles.aboutText}>
               <p>
-                This company is a proud <b>veteran owned</b>, dedicated to bridging the gap between top-quality silica manufacturers in China and customers in the USA. Our mission is to deliver excellence, reliability, and service with the integrity and commitment that defines our veteran roots.
+                This company is a proud <b>veteran owned</b>, dedicated to delivering top-quality silica products with excellence, reliability, and service. Our mission is to serve our customers with the integrity and commitment that defines our veteran roots.
               </p>
             </div>
             <img

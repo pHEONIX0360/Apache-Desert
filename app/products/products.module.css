@@ -154,4 +154,75 @@
   color: #888;
   font-size: 1.1rem;
   padding: 2rem 0;
+}
+
+.productsLayout {
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.sidebar {
+  min-width: 220px;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #27ae6011;
+  padding: 2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.filterSection h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #27ae60;
+  margin-bottom: 0.7rem;
+}
+
+.filterBtn, .selectedFilter {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #f4f6f8;
+  color: #222;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filterBtn:hover {
+  background: #eafaf1;
+  color: #27ae60;
+}
+
+.selectedFilter {
+  background: #27ae60;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .productsLayout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sidebar {
+    min-width: 0;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .filterSection {
+    min-width: 120px;
+    flex: 1;
+  }
 } 
