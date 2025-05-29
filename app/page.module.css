@@ -979,3 +979,88 @@ a.secondary {
   background: #eafaf1;
   color: #27ae60;
 }
+
+.customFormSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 48px 0;
+}
+.customFormCard {
+  background: #fafbfc;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(39,174,96,0.10);
+  padding: 3rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.customFormHeadline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem;
+}
+.customForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.customLabel {
+  width: 100%;
+  font-size: 1.05rem;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.customInput {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 0.7rem;
+  outline: none;
+  background: #fff;
+  color: #222;
+  margin-top: 0.2rem;
+  transition: border 0.2s;
+}
+.customInput:focus {
+  border: 1.5px solid #27ae60;
+}
+.customFieldset {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 0.7rem;
+  padding: 1rem 1.2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+.customSubmitBtn {
+  background: #27ae60;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px #27ae6022;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.customSubmitBtn:hover {
+  background: #219150;
+  box-shadow: 0 4px 16px #27ae6044;
+}
