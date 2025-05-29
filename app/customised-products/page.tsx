@@ -5,12 +5,30 @@ import { useState } from "react";
 export default function CustomisedProducts() {
   const [logo, setLogo] = useState<File | null>(null);
   const [images, setImages] = useState<FileList | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3500);
+  }
 
   return (
     <section className={styles.customFormSection}>
       <div className={styles.customFormCard}>
+        <div className={styles.customFormHeroIcon}>📦✨</div>
         <h1 className={styles.customFormHeadline}>Request Customised Desiccant Products</h1>
-        <form className={styles.customForm}>
+        <p className={styles.customFormSubheadline}>
+          Get the perfect desiccant solution tailored for your brand and needs. Upload your logo, choose your style, and let us do the rest!
+        </p>
+        {submitted ? (
+          <div className={styles.customFormSuccess}>
+            <span role="img" aria-label="Success" style={{fontSize: '2.5rem'}}>🎉</span>
+            <h2>Request Submitted!</h2>
+            <p>Thank you for your interest. Our team will contact you soon.</p>
+          </div>
+        ) : (
+        <form className={styles.customForm} onSubmit={handleSubmit}>
           <label className={styles.customLabel}>
             Company Name
             <input type="text" className={styles.customInput} required />
@@ -64,6 +82,7 @@ export default function CustomisedProducts() {
           </label>
           <button type="submit" className={styles.customSubmitBtn}>Submit Request</button>
         </form>
+        )}
       </div>
     </section>
   );

@@ -985,13 +985,13 @@ a.secondary {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: linear-gradient(120deg, #eafaf1 0%, #fff 100%);
   padding: 48px 0;
 }
 .customFormCard {
   background: #fafbfc;
   border-radius: 1.5rem;
-  box-shadow: 0 4px 24px rgba(39,174,96,0.10);
+  box-shadow: 0 8px 40px rgba(39,174,96,0.13), 0 1.5px 8px rgba(39,174,96,0.04);
   padding: 3rem 2.5rem;
   max-width: 480px;
   width: 100%;
@@ -999,12 +999,44 @@ a.secondary {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.customFormHeroIcon {
+  font-size: 3.2rem;
+  margin-bottom: 0.7rem;
+  animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
 }
 .customFormHeadline {
   font-size: 2rem;
   font-weight: 700;
   color: #222;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+}
+.customFormSubheadline {
+  font-size: 1.1rem;
+  color: #27ae60;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.customFormSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 2rem 0.5rem;
+  color: #27ae60;
+  animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .customForm {
   width: 100%;
@@ -1048,7 +1080,7 @@ a.secondary {
   color: #222;
 }
 .customSubmitBtn {
-  background: #27ae60;
+  background: linear-gradient(90deg, #27ae60 60%, #2ecc40 100%);
   color: #fff;
   font-size: 1.1rem;
   font-weight: 700;
@@ -1057,10 +1089,12 @@ a.secondary {
   padding: 0.9rem 0;
   cursor: pointer;
   margin-top: 0.5rem;
-  box-shadow: 0 2px 8px #27ae6022;
+  box-shadow: 0 2px 16px #27ae6044, 0 0 0 0 #27ae60;
   transition: background 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 1;
 }
 .customSubmitBtn:hover {
-  background: #219150;
-  box-shadow: 0 4px 16px #27ae6044;
+  background: linear-gradient(90deg, #219150 60%, #27ae60 100%);
+  box-shadow: 0 4px 24px #27ae6044, 0 0 8px 2px #27ae6022;
 }
