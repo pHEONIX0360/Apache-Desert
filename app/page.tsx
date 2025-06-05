@@ -73,7 +73,7 @@ export default function Home() {
           <h2 className={styles.aboutHeadline}>About Us</h2>
           <div className={styles.aboutRow}>
             <img
-              src="https://cdn.pixabay.com/animation/2022/10/18/14/13/14-13-36-963_512.gif"
+              src="/Images/images (1).png"
               alt="Animated Man 1"
               className={styles.aboutImage}
             />
@@ -83,7 +83,7 @@ export default function Home() {
               </p>
             </div>
             <img
-              src="https://cdn.pixabay.com/animation/2022/10/18/14/13/14-13-36-963_512.gif"
+              src="/Images/images (1).png"
               alt="Animated Man 2"
               className={styles.aboutImage}
             />
