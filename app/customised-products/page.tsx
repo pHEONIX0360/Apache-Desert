@@ -66,11 +66,11 @@ export default function CustomisedProducts() {
             </select>
           </label>
           <label className={styles.customLabel}>
-            With or Without Packing
+            Product Type
             <select className={styles.customInput} required>
               <option value="">Select</option>
-              <option value="With Packing">With Packing</option>
-              <option value="Without Packing">Without Packing</option>
+              <option value="Silica Gel">Silica Gel</option>
+              <option value="Canister">Canister</option>
             </select>
           </label>
           <label className={styles.customLabel}>
@@ -84,7 +84,6 @@ export default function CustomisedProducts() {
           <fieldset className={styles.customFieldset}>
             <legend>Product Use</legend>
             <label><input type="checkbox" name="use" value="Pharmaceutical" /> Pharmaceutical</label>
-            <label><input type="checkbox" name="use" value="Beverage" /> Beverage</label>
             <label><input type="checkbox" name="use" value="Foods" /> Foods</label>
             <label><input type="checkbox" name="use" value="Non-foods" /> Non-foods</label>
           </fieldset>

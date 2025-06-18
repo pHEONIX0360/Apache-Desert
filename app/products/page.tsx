@@ -102,7 +102,7 @@ const products = [
 ];
 
 const types = ["Silica Gel", "Canister"];
-const weights = ["0.5g", "1g", "2g", "3g", "5g"];
+const weights = ["0.5g", "1g", "2g", "3g", "10g", "20g", "30g"];
 const packings = ["Aiwa paper", "Tyvek", "Plastic bottle"];
 
 export default function ProductsPage() {
