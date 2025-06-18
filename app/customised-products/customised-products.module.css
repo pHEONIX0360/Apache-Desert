@@ -1,0 +1,90 @@
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999 !important;
+  backdrop-filter: blur(10px);
+}
+
+.dialogBox {
+  background: #fff !important;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  position: relative;
+  border: 2px solid #e74c3c;
+  z-index: 10000 !important;
+}
+
+.dialogBox h3 {
+  color: #e74c3c !important;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.dialogBox p {
+  color: #2c3e50 !important;
+  font-size: 16px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.dialogButton {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.dialogButton:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.dialogButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .dialogBox {
+    padding: 25px;
+    width: 85%;
+  }
+
+  .dialogBox h3 {
+    font-size: 20px;
+  }
+
+  .dialogBox p {
+    font-size: 15px;
+  }
+
+  .dialogButton {
+    padding: 10px 25px;
+    font-size: 15px;
+  }
+}
+
+/* Ensure form is properly positioned when dialog is shown */
+.customFormCard {
+  position: relative;
+  z-index: 1;
+} 

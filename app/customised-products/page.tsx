@@ -6,6 +6,8 @@ export default function CustomisedProducts() {
   const [logo, setLogo] = useState<File | null>(null);
   const [images, setImages] = useState<FileList | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showMinOrderDialog, setShowMinOrderDialog] = useState(true);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -28,6 +30,20 @@ export default function CustomisedProducts() {
       <div className={styles.moistureDrop}></div>
 
       <div className={styles.customFormCard}>
+        {showMinOrderDialog && (
+          <div className={styles.dialogOverlay}>
+            <div className={styles.dialogBox}>
+              <h3>Minimum Order Quantity</h3>
+              <p>A minimum order quantity is required for customised products.</p>
+              <button 
+                className={styles.dialogButton}
+                onClick={() => setShowMinOrderDialog(false)}
+              >
+                I Understand
+              </button>
+            </div>
+          </div>
+        )}
         <div className={styles.customFormHeroIcon}>📦✨</div>
         <h1 className={styles.customFormHeadline}>Request Customised Desiccant Products</h1>
         <p className={styles.customFormSubheadline}>

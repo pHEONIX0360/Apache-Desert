@@ -10,6 +10,7 @@ const products = [
     packing: "Aiwa paper",
     size: "2*3.2",
     price: 2.99,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 0.5g (Tyvek)",
@@ -18,6 +19,7 @@ const products = [
     packing: "Tyvek",
     size: "2*3.2",
     price: 2.99,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 1g (Aiwa paper)",
@@ -26,6 +28,7 @@ const products = [
     packing: "Aiwa paper",
     size: "2.5*3.8",
     price: 3.49,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 1g (Tyvek)",
@@ -34,6 +37,7 @@ const products = [
     packing: "Tyvek",
     size: "2.5*3.8",
     price: 3.49,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 2g (Aiwa paper)",
@@ -42,6 +46,7 @@ const products = [
     packing: "Aiwa paper",
     size: "2.5*4.6",
     price: 4.29,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 2g (Tyvek)",
@@ -50,6 +55,7 @@ const products = [
     packing: "Tyvek",
     size: "2.5*4.6",
     price: 4.29,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 3g (Aiwa paper)",
@@ -58,6 +64,7 @@ const products = [
     packing: "Aiwa paper",
     size: "3.0*5.4",
     price: 5.19,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 3g (Tyvek)",
@@ -66,6 +73,7 @@ const products = [
     packing: "Tyvek",
     size: "3.0*5.4",
     price: 5.19,
+    fillType: "Loose Filled"
   },
   {
     name: "Silica gel desiccant pouch 5g (Aiwa paper)",
@@ -90,6 +98,7 @@ const products = [
     packing: "Plastic bottle",
     size: "Diameter * Height 13*18 mm",
     price: 7.99,
+    fillType: "Loose Filled"
   },
   {
     name: "Canister Desiccant 3g",
@@ -98,23 +107,27 @@ const products = [
     packing: "Plastic bottle",
     size: "Diameter * Height 19*25 mm",
     price: 9.99,
+    fillType: "Loose Filled"
   },
 ];
 
 const types = ["Silica Gel", "Canister"];
 const weights = ["0.5g", "1g", "2g", "3g", "10g", "20g", "30g"];
 const packings = ["Aiwa paper", "Tyvek", "Plastic bottle"];
+const fillTypes = ["Loose Filled", "Roll"];
 
 export default function ProductsPage() {
   const [selectedType, setSelectedType] = useState("");
   const [selectedWeight, setSelectedWeight] = useState("");
   const [selectedPacking, setSelectedPacking] = useState("");
+  const [selectedFillType, setSelectedFillType] = useState("");
 
   // Sequential filtering
   let filtered = products;
   if (selectedType) filtered = filtered.filter(p => p.type === selectedType);
   if (selectedWeight) filtered = filtered.filter(p => p.weight === selectedWeight);
   if (selectedPacking) filtered = filtered.filter(p => p.packing === selectedPacking);
+  if (selectedFillType) filtered = filtered.filter(p => p.fillType === selectedFillType);
 
   return (
     <div className={styles.productsPage}>
@@ -132,6 +145,7 @@ export default function ProductsPage() {
                   setSelectedType(type);
                   setSelectedWeight("");
                   setSelectedPacking("");
+                  setSelectedFillType("");
                 }}
               >
                 {type}
@@ -150,6 +164,7 @@ export default function ProductsPage() {
                     onClick={() => {
                       setSelectedWeight(weight);
                       setSelectedPacking("");
+                      setSelectedFillType("");
                     }}
                   >
                     {weight}
@@ -166,11 +181,28 @@ export default function ProductsPage() {
                   <button
                     key={packing}
                     className={selectedPacking === packing ? styles.selectedFilter : styles.filterBtn}
-                    onClick={() => setSelectedPacking(packing)}
+                    onClick={() => {
+                      setSelectedPacking(packing);
+                      setSelectedFillType("");
+                    }}
                   >
                     {packing}
                   </button>
                 ))}
+            </div>
+          )}
+          {selectedType && selectedWeight && selectedPacking && (
+            <div className={styles.filterSection}>
+              <h3>Loose Filled or Roll</h3>
+              {fillTypes.map(fillType => (
+                <button
+                  key={fillType}
+                  className={selectedFillType === fillType ? styles.selectedFilter : styles.filterBtn}
+                  onClick={() => setSelectedFillType(fillType)}
+                >
+                  {fillType}
+                </button>
+              ))}
             </div>
           )}
         </aside>

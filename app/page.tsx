@@ -83,7 +83,8 @@ export default function Home() {
               </p>
             </div>
             <img
-              src="/Images/images (1).png"
+              src="/Images/images (1
+              ).png"
               alt="Animated Man 2"
               className={styles.aboutImage}
             />
