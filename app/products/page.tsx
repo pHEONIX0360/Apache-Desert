@@ -111,23 +111,29 @@ const products = [
   },
 ];
 
-const types = ["Silica Gel", "Canister"];
-const weights = ["0.5g", "1g", "2g", "3g", "10g", "20g", "30g"];
-const packings = ["Aiwa paper", "Tyvek", "Plastic bottle"];
-const fillTypes = ["Loose Filled", "Roll"];
+const grades = ["Pharma", "Food", "Non-Food"];
+const types = ["Packet", "Canister"];
+const caseTypes = ["Loose Fill", "Roll"];
+const sizes = ["0.5g", "1g", "2g", "3g", "5g", "10g"];
+const materials = ["Aiwa", "Tyvek"];
+const coreSizes = ["30mm", "76mm", "3\""];
 
 export default function ProductsPage() {
+  const [selectedGrade, setSelectedGrade] = useState("");
   const [selectedType, setSelectedType] = useState("");
-  const [selectedWeight, setSelectedWeight] = useState("");
-  const [selectedPacking, setSelectedPacking] = useState("");
-  const [selectedFillType, setSelectedFillType] = useState("");
+  const [selectedCaseType, setSelectedCaseType] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedMaterial, setSelectedMaterial] = useState("");
+  const [selectedCoreSize, setSelectedCoreSize] = useState("");
 
-  // Sequential filtering
+  // Filtering logic (update as needed for your data structure)
   let filtered = products;
+  // if (selectedGrade) filtered = filtered.filter(p => p.grade === selectedGrade); // Not in data
   if (selectedType) filtered = filtered.filter(p => p.type === selectedType);
-  if (selectedWeight) filtered = filtered.filter(p => p.weight === selectedWeight);
-  if (selectedPacking) filtered = filtered.filter(p => p.packing === selectedPacking);
-  if (selectedFillType) filtered = filtered.filter(p => p.fillType === selectedFillType);
+  // if (selectedCaseType) filtered = filtered.filter(p => p.caseType === selectedCaseType); // Not in data
+  if (selectedSize) filtered = filtered.filter(p => p.weight === selectedSize);
+  if (selectedMaterial) filtered = filtered.filter(p => p.packing && p.packing.toLowerCase().includes(selectedMaterial.toLowerCase()));
+  // if (selectedCoreSize) filtered = filtered.filter(p => p.coreSize === selectedCoreSize); // Not in data
 
   return (
     <div className={styles.productsPage}>
@@ -136,6 +142,25 @@ export default function ProductsPage() {
         {/* Sidebar */}
         <aside className={styles.sidebar}>
           <div className={styles.filterSection}>
+            <h3>Grade</h3>
+            {grades.map(grade => (
+              <button
+                key={grade}
+                className={selectedGrade === grade ? styles.selectedFilter : styles.filterBtn}
+                onClick={() => {
+                  setSelectedGrade(grade);
+                  setSelectedType("");
+                  setSelectedCaseType("");
+                  setSelectedSize("");
+                  setSelectedMaterial("");
+                  setSelectedCoreSize("");
+                }}
+              >
+                {grade}
+              </button>
+            ))}
+          </div>
+          <div className={styles.filterSection}>
             <h3>Type</h3>
             {types.map(type => (
               <button
@@ -143,68 +168,76 @@ export default function ProductsPage() {
                 className={selectedType === type ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
                   setSelectedType(type);
-                  setSelectedWeight("");
-                  setSelectedPacking("");
-                  setSelectedFillType("");
+                  setSelectedCaseType("");
+                  setSelectedSize("");
+                  setSelectedMaterial("");
+                  setSelectedCoreSize("");
                 }}
               >
                 {type}
               </button>
             ))}
           </div>
-          {selectedType && (
-            <div className={styles.filterSection}>
-              <h3>Weight</h3>
-              {weights
-                .filter(w => products.some(p => p.type === selectedType && p.weight === w))
-                .map(weight => (
-                  <button
-                    key={weight}
-                    className={selectedWeight === weight ? styles.selectedFilter : styles.filterBtn}
-                    onClick={() => {
-                      setSelectedWeight(weight);
-                      setSelectedPacking("");
-                      setSelectedFillType("");
-                    }}
-                  >
-                    {weight}
-                  </button>
-                ))}
-            </div>
-          )}
-          {selectedType && selectedWeight && (
-            <div className={styles.filterSection}>
-              <h3>Packing</h3>
-              {packings
-                .filter(pk => products.some(p => p.type === selectedType && p.weight === selectedWeight && p.packing === pk))
-                .map(packing => (
-                  <button
-                    key={packing}
-                    className={selectedPacking === packing ? styles.selectedFilter : styles.filterBtn}
-                    onClick={() => {
-                      setSelectedPacking(packing);
-                      setSelectedFillType("");
-                    }}
-                  >
-                    {packing}
-                  </button>
-                ))}
-            </div>
-          )}
-          {selectedType && selectedWeight && selectedPacking && (
-            <div className={styles.filterSection}>
-              <h3>Loose Filled or Roll</h3>
-              {fillTypes.map(fillType => (
-                <button
-                  key={fillType}
-                  className={selectedFillType === fillType ? styles.selectedFilter : styles.filterBtn}
-                  onClick={() => setSelectedFillType(fillType)}
-                >
-                  {fillType}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className={styles.filterSection}>
+            <h3>Case Type</h3>
+            {caseTypes.map(caseType => (
+              <button
+                key={caseType}
+                className={selectedCaseType === caseType ? styles.selectedFilter : styles.filterBtn}
+                onClick={() => {
+                  setSelectedCaseType(caseType);
+                  setSelectedSize("");
+                  setSelectedMaterial("");
+                  setSelectedCoreSize("");
+                }}
+              >
+                {caseType}
+              </button>
+            ))}
+          </div>
+          <div className={styles.filterSection}>
+            <h3>Size</h3>
+            {sizes.map(size => (
+              <button
+                key={size}
+                className={selectedSize === size ? styles.selectedFilter : styles.filterBtn}
+                onClick={() => {
+                  setSelectedSize(size);
+                  setSelectedMaterial("");
+                  setSelectedCoreSize("");
+                }}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+          <div className={styles.filterSection}>
+            <h3>Material</h3>
+            {materials.map(material => (
+              <button
+                key={material}
+                className={selectedMaterial === material ? styles.selectedFilter : styles.filterBtn}
+                onClick={() => {
+                  setSelectedMaterial(material);
+                  setSelectedCoreSize("");
+                }}
+              >
+                {material}
+              </button>
+            ))}
+          </div>
+          <div className={styles.filterSection}>
+            <h3>Core Size</h3>
+            {coreSizes.map(coreSize => (
+              <button
+                key={coreSize}
+                className={selectedCoreSize === coreSize ? styles.selectedFilter : styles.filterBtn}
+                onClick={() => setSelectedCoreSize(coreSize)}
+              >
+                {coreSize}
+              </button>
+            ))}
+          </div>
         </aside>
         {/* Product Grid */}
         <div className={styles.grid}>
