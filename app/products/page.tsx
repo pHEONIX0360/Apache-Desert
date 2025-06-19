@@ -148,7 +148,7 @@ export default function ProductsPage() {
                 key={grade}
                 className={selectedGrade === grade ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
-                  setSelectedGrade(grade);
+                  setSelectedGrade(selectedGrade === grade ? "" : grade);
                   setSelectedType("");
                   setSelectedCaseType("");
                   setSelectedSize("");
@@ -167,7 +167,7 @@ export default function ProductsPage() {
                 key={type}
                 className={selectedType === type ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
-                  setSelectedType(type);
+                  setSelectedType(selectedType === type ? "" : type);
                   setSelectedCaseType("");
                   setSelectedSize("");
                   setSelectedMaterial("");
@@ -185,7 +185,7 @@ export default function ProductsPage() {
                 key={caseType}
                 className={selectedCaseType === caseType ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
-                  setSelectedCaseType(caseType);
+                  setSelectedCaseType(selectedCaseType === caseType ? "" : caseType);
                   setSelectedSize("");
                   setSelectedMaterial("");
                   setSelectedCoreSize("");
@@ -202,7 +202,7 @@ export default function ProductsPage() {
                 key={size}
                 className={selectedSize === size ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
-                  setSelectedSize(size);
+                  setSelectedSize(selectedSize === size ? "" : size);
                   setSelectedMaterial("");
                   setSelectedCoreSize("");
                 }}
@@ -218,7 +218,7 @@ export default function ProductsPage() {
                 key={material}
                 className={selectedMaterial === material ? styles.selectedFilter : styles.filterBtn}
                 onClick={() => {
-                  setSelectedMaterial(material);
+                  setSelectedMaterial(selectedMaterial === material ? "" : material);
                   setSelectedCoreSize("");
                 }}
               >
@@ -232,7 +232,7 @@ export default function ProductsPage() {
               <button
                 key={coreSize}
                 className={selectedCoreSize === coreSize ? styles.selectedFilter : styles.filterBtn}
-                onClick={() => setSelectedCoreSize(coreSize)}
+                onClick={() => setSelectedCoreSize(selectedCoreSize === coreSize ? "" : coreSize)}
               >
                 {coreSize}
               </button>
