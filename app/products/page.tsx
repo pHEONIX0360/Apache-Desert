@@ -246,7 +246,7 @@ export default function ProductsPage() {
           ) : (
             filtered.map((product, idx) => (
               <div className={styles.card} key={idx}>
-                <img src="/Images/Logo 7.png" alt={product.name} className={styles.productImg} />
+                <img src="/Images/Desiccant-Silica-Gel.jpg" alt={product.name} className={styles.productImg} />
                 <div className={styles.productInfo}>
                   <h2 className={styles.productName}>{product.name}</h2>
                   <div className={styles.productDetails}>
