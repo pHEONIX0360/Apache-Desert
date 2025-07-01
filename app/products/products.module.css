@@ -14,7 +14,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -29,7 +29,7 @@
   align-items: center;
   padding: 1.5rem 1.2rem 1.2rem 1.2rem;
   transition: box-shadow 0.2s, transform 0.2s;
-  min-height: 370px;
+  min-height: 500px;
 }
 
 .card:hover {
@@ -62,6 +62,18 @@
   margin-bottom: 0.7rem;
 }
 
+.qualityBadge {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .productDetails {
   font-size: 0.98rem;
   color: #444;
@@ -72,29 +84,170 @@
   text-align: center;
 }
 
+.loadPricing {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.loadPricing h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.pricingOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.pricingOptions span {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.selectedPricing {
+  background: #e8f5e8 !important;
+  color: #27ae60 !important;
+  font-weight: 600;
+}
+
+.quantitySection {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.quantitySection h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.quantityBtn {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #27ae60;
+  background: white;
+  color: #27ae60;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.quantityBtn:hover {
+  background: #27ae60;
+  color: white;
+  transform: scale(1.1);
+}
+
+.quantityDisplay {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  min-width: 30px;
+  text-align: center;
+}
+
+.loadSelection {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.loadSelection h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.loadButtons {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+}
+
+.loadBtn {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  background: white;
+  color: #666;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.loadBtn:hover {
+  border-color: #27ae60;
+  color: #27ae60;
+}
+
+.selectedLoad {
+  background: #27ae60 !important;
+  color: white !important;
+  border-color: #27ae60 !important;
+  font-weight: 600;
+}
+
 .priceRow {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.8rem;
   margin-top: 0.7rem;
-  gap: 1rem;
 }
 
-.price {
-  font-size: 1.2rem;
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.unitPrice {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.totalPrice {
+  font-size: 1.3rem;
   font-weight: 700;
   color: #27ae60;
 }
 
 .addBtn {
-  flex: 1;
+  width: 100%;
   background: #27ae60;
   color: #fff;
   font-weight: 700;
   border: none;
   border-radius: 0.7rem;
-  padding: 0.7rem 0;
+  padding: 0.8rem 0;
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 2px 8px #27ae6022;
@@ -112,14 +265,21 @@
   }
   .grid {
     gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   .card {
     padding: 1rem 0.5rem 1rem 0.5rem;
-    min-height: 320px;
+    min-height: 450px;
   }
   .productImg {
     width: 70px;
     height: 70px;
+  }
+  .loadButtons {
+    flex-direction: column;
+  }
+  .loadBtn {
+    width: 100%;
   }
 }
 
