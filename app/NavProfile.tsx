@@ -1,15 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "./context/AuthContext";
 import { useCart } from "./context/CartContext";
 
-export default function Navbar() {
+export default function NavProfile() {
   const [location, setLocation] = useState("Select Location");
-  const pathname = usePathname();
   const [productsDropdown, setProductsDropdown] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const { cart, removeFromCart, clearCart } = useCart();
@@ -48,6 +46,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className={styles.navCenter}>
+        {/* Home link removed for profile nav */}
         <div
           className={styles.navDropdown}
           onMouseEnter={() => setProductsDropdown(true)}
