@@ -46,7 +46,7 @@ export default function NavProfile() {
         </Link>
       </div>
       <div className={styles.navCenter}>
-        {/* Home link removed for profile nav */}
+        <Link href="/" className={styles.navLink}>Home</Link>
         <div
           className={styles.navDropdown}
           onMouseEnter={() => setProductsDropdown(true)}

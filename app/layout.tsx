@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./Navbar";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
+import NavSwitcher from "./NavSwitcher";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           <CartProvider>
-            <Navbar />
+            <NavSwitcher />
             <div style={{ paddingTop: "80px" }}>{children}</div>
           </CartProvider>
         </AuthProvider>
