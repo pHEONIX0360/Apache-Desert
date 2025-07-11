@@ -1,6 +1,9 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-olive: #5A5F3C;
+  --color-tan: #B59C6A;
+  --color-olive-brown: #948355;
+  --color-rust: #9D4628;
+  --color-white: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,8 +20,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background: var(--color-olive);
+  color: var(--color-olive-brown);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

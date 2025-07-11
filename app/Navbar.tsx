@@ -4,11 +4,16 @@ import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "./context/AuthContext";
+import { useCart } from "./context/CartContext";
 
 export default function Navbar() {
   const [location, setLocation] = useState("Select Location");
   const pathname = usePathname();
   const [productsDropdown, setProductsDropdown] = useState(false);
+  const { user, isAuthenticated, logout } = useAuth();
+  const { cart, removeFromCart, clearCart } = useCart();
+  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && "geolocation" in navigator) {
@@ -68,11 +73,61 @@ export default function Navbar() {
           <span className={styles.locationIcon}>📍</span>
           <span className={styles.locationText}>{location}</span>
         </button>
-        <button className={styles.cartBtn} aria-label="Cart">
+        <button className={styles.cartBtn} aria-label="Cart" onClick={() => setCartOpen(true)}>
           <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span className={styles.cartBadge}>0</span>
+          <span className={styles.cartBadge}>{cart.length}</span>
         </button>
-        
+        {cartOpen && (
+          <div className={styles.cartModalOverlay} onClick={() => setCartOpen(false)}>
+            <div className={styles.cartModal} onClick={e => e.stopPropagation()}>
+              <h3>Your Cart</h3>
+              {cart.length === 0 ? (
+                <p>Your cart is empty.</p>
+              ) : (
+                <ul className={styles.cartList}>
+                  {cart.map((item, idx) => (
+                    <li key={idx} className={styles.cartItem}>
+                      <span>{item.product.name} ({item.loadType})</span>
+                      <span>Qty: {item.quantity}</span>
+                      <button onClick={() => removeFromCart(idx)} className={styles.removeBtn}>Remove</button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <button onClick={() => setCartOpen(false)} className={styles.closeCartBtn}>Close</button>
+              {cart.length > 0 && <button onClick={clearCart} className={styles.clearCartBtn}>Clear Cart</button>}
+            </div>
+          </div>
+        )}
+        {isAuthenticated ? (
+          <div className={styles.userMenu}>
+            <span className={styles.userName}>Welcome, {user?.name}!</span>
+            <Link href="/dashboard" className={styles.profileBtn}>
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M5.5 21a8.38 8.38 0 0 1 13 0"/>
+              </svg>
+              <span>Profile</span>
+            </Link>
+            <button onClick={logout} className={styles.logoutBtn}>
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16,17 21,12 16,7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        ) : (
+          <Link href="/auth/signin" className={styles.loginBtn}>
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10,17 15,12 10,7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+            <span>Login</span>
+          </Link>
+        )}
       </div>
     </nav>
   );

@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./products.module.css";
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
+import { useCart } from "../context/CartContext";
+import Image from "next/image";
 
 const products = [
   {
@@ -203,6 +207,7 @@ export default function ProductsPage() {
   // State for quantity and load selection for each product
   const [productQuantities, setProductQuantities] = useState<{[key: number]: number}>({});
   const [selectedLoads, setSelectedLoads] = useState<{[key: number]: 'case' | 'pallet' | 'truck'}>({});
+  const [showAdded, setShowAdded] = useState(false);
 
   // Initialize quantities and loads
   React.useEffect(() => {
@@ -237,6 +242,10 @@ export default function ProductsPage() {
   if (selectedCaseType) filtered = filtered.filter(p => p.fillType && p.fillType.toLowerCase().includes(selectedCaseType.toLowerCase()));
   if (selectedSize) filtered = filtered.filter(p => p.weight === selectedSize);
   if (selectedMaterial) filtered = filtered.filter(p => p.packing && p.packing.toLowerCase().includes(selectedMaterial.toLowerCase()));
+
+  const { isAuthenticated } = useAuth();
+  const { addToCart } = useCart();
+  const router = useRouter();
 
   return (
     <div className={styles.productsPage}>
@@ -352,7 +361,7 @@ export default function ProductsPage() {
               const quantity = productQuantities[productIndex] || 1;
               const selectedLoad = selectedLoads[productIndex] || 'case';
               const loadPrice = product.loadPricing[selectedLoad];
-              const totalPrice = (product.price + loadPrice) * quantity;
+              const totalPrice = loadPrice * quantity;
               
               return (
                 <div className={styles.card} key={idx}>
@@ -371,17 +380,15 @@ export default function ProductsPage() {
                     {/* Load Pricing Display */}
                     <div className={styles.loadPricing}>
                       <h4>Load Pricing:</h4>
-                      <div className={styles.pricingOptions}>
-                        <span className={selectedLoad === 'case' ? styles.selectedPricing : ''}>
-                          Case: ${product.loadPricing.case}
-                        </span>
-                        <span className={selectedLoad === 'pallet' ? styles.selectedPricing : ''}>
-                          Pallet: ${product.loadPricing.pallet}
-                        </span>
-                        <span className={selectedLoad === 'truck' ? styles.selectedPricing : ''}>
-                          Truck: ${product.loadPricing.truck}
-                        </span>
-                      </div>
+                      <select
+                        className={styles.loadDropdown}
+                        value={selectedLoad}
+                        onChange={e => updateLoad(productIndex, e.target.value as 'case' | 'pallet' | 'truck')}
+                      >
+                        <option value="case">Case: ${product.loadPricing.case}</option>
+                        <option value="pallet">Pallet: ${product.loadPricing.pallet}</option>
+                        <option value="truck">Truck: ${product.loadPricing.truck}</option>
+                      </select>
                     </div>
                     
                     {/* Quantity Controls */}
@@ -404,37 +411,47 @@ export default function ProductsPage() {
                       </div>
                     </div>
                     
-                    {/* Load Selection */}
-                    <div className={styles.loadSelection}>
+                    {/* Load Type Selection */}
+                    <div className={styles.loadTypeSection}>
                       <h4>Load Type:</h4>
-                      <div className={styles.loadButtons}>
-                        <button 
-                          className={`${styles.loadBtn} ${selectedLoad === 'case' ? styles.selectedLoad : ''}`}
-                          onClick={() => updateLoad(productIndex, 'case')}
-                        >
-                          Case
-                        </button>
-                        <button 
-                          className={`${styles.loadBtn} ${selectedLoad === 'pallet' ? styles.selectedLoad : ''}`}
-                          onClick={() => updateLoad(productIndex, 'pallet')}
-                        >
-                          Pallet
-                        </button>
-                        <button 
-                          className={`${styles.loadBtn} ${selectedLoad === 'truck' ? styles.selectedLoad : ''}`}
-                          onClick={() => updateLoad(productIndex, 'truck')}
-                        >
-                          Truck
-                        </button>
+                      <div className={styles.loadTypeBtns}>
+                        {['case', 'pallet', 'truck'].map(type => (
+                          <button
+                            key={type}
+                            className={`${styles.loadTypeBtn} ${selectedLoad === type ? styles.selected : ''}`}
+                            onClick={() => updateLoad(productIndex, type as 'case' | 'pallet' | 'truck')}
+                            type="button"
+                          >
+                            {type.charAt(0).toUpperCase() + type.slice(1)}
+                          </button>
+                        ))}
                       </div>
                     </div>
                     
                     <div className={styles.priceRow}>
                       <div className={styles.priceInfo}>
                         <span className={styles.unitPrice}>${product.price.toFixed(2)} + ${loadPrice}</span>
-                        <span className={styles.totalPrice}>Total: ${totalPrice.toFixed(2)}</span>
+                        <div className={styles.priceSection}>
+                          <span>{loadPrice ? `${selectedLoad.charAt(0).toUpperCase() + selectedLoad.slice(1)}: $${loadPrice} × ${quantity}` : ''}</span>
+                        </div>
+                        <div className={styles.totalSection}>
+                          Total: ${totalPrice.toFixed(2)}
+                        </div>
                       </div>
-                      <button className={styles.addBtn}>ADD TO CART</button>
+                      <button 
+                        className={styles.addToCartBtn}
+                        onClick={() => {
+                          if (!isAuthenticated) {
+                            router.push("/auth/signin");
+                            return;
+                          }
+                          addToCart({ product, quantity, loadType: selectedLoad });
+                          setShowAdded(true);
+                          setTimeout(() => setShowAdded(false), 2000);
+                        }}
+                      >
+                        ADD TO CART
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -443,6 +460,12 @@ export default function ProductsPage() {
           )}
         </div>
       </div>
+      {showAdded && (
+        <div className={styles.addedNotification}>
+          <Image src="/Images/bag.webp" alt="Added to cart" width={60} height={60} />
+          <span>Product added to cart!</span>
+        </div>
+      )}
     </div>
   );
 } 
