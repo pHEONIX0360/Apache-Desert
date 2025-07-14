@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +8,6 @@ import { useCart } from "./context/CartContext";
 
 export default function Navbar() {
   const [location, setLocation] = useState("Select Location");
-  const pathname = usePathname();
   const [productsDropdown, setProductsDropdown] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const { cart, removeFromCart, clearCart } = useCart();

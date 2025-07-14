@@ -3,10 +3,7 @@ import styles from "../page.module.css";
 import { useState } from "react";
 
 export default function CustomisedProducts() {
-  const [logo, setLogo] = useState<File | null>(null);
-  const [images, setImages] = useState<FileList | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [showMinOrderDialog, setShowMinOrderDialog] = useState(true);
 
   function handleSubmit(e: React.FormEvent) {
@@ -91,11 +88,11 @@ export default function CustomisedProducts() {
           </label>
           <label className={styles.customLabel}>
             Logo (Upload)
-            <input type="file" accept="image/*" className={styles.customInput} onChange={e => setLogo(e.target.files?.[0] || null)} />
+            <input type="file" accept="image/*" className={styles.customInput} />
           </label>
           <label className={styles.customLabel}>
             Reference Images (Upload)
-            <input type="file" accept="image/*" multiple className={styles.customInput} onChange={e => setImages(e.target.files)} />
+            <input type="file" accept="image/*" multiple className={styles.customInput} />
           </label>
           <fieldset className={styles.customFieldset}>
             <legend>Product Use</legend>

@@ -23,7 +23,7 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<unknown[]>([]);
 
   const addToCart = (item: CartItem) => {
     setCart(prev => {

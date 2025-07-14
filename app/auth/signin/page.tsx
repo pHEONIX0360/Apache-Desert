@@ -8,14 +8,11 @@ import styles from './auth.module.css';
 
 export default function SignIn() {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
   });
-  const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const { login, signup, isAuthenticated } = useAuth();
@@ -28,11 +25,6 @@ export default function SignIn() {
   ];
 
   const colors = ["#ebf70a", "#f9cb9c", "#dc9d1e", "#9ACD32"];
-  const texts = [
-    "Quality Desiccant Solutions!",
-    "Your Trusted Partner in Moisture Control!",
-    "Premium Desiccant Products"
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {

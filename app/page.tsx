@@ -6,21 +6,21 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    chatbase?: any;
+    chatbase?: unknown;
   }
 }
 
 export default function Home() {
   useEffect(() => {
     if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-      window.chatbase = (...args: any[]) => {
+      window.chatbase = (...args: unknown[]) => {
         if (!window.chatbase.q) window.chatbase.q = [];
         window.chatbase.q.push(args);
       };
       window.chatbase = new Proxy(window.chatbase, {
         get(target, prop) {
           if (prop === "q") return target.q;
-          return (...args: any[]) => target(prop, ...args);
+          return (...args: unknown[]) => target(prop, ...args);
         },
       });
     }
