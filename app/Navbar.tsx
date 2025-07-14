@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,8 +8,6 @@ import { useCart } from "./context/CartContext";
 
 export default function Navbar() {
   const [location, setLocation] = useState("Select Location");
-  const pathname = usePathname();
-  const [productsDropdown, setProductsDropdown] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const { cart, removeFromCart, clearCart } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
@@ -48,24 +45,8 @@ export default function Navbar() {
         </Link>
       </div>
       <div className={styles.navCenter}>
-        <div
-          className={styles.navDropdown}
-          onMouseEnter={() => setProductsDropdown(true)}
-          onMouseLeave={() => setProductsDropdown(false)}
-        >
-          <span className={styles.navLink} tabIndex={0} onClick={() => setProductsDropdown(v => !v)}>
-            Products ▾
-          </span>
-          {productsDropdown && (
-            <div className={styles.dropdownMenu}>
-              <Link href="/products" className={styles.dropdownItem}>Products</Link>
-              <Link href="/customised-products" className={styles.dropdownItem}>Customised Products</Link>
-            </div>
-          )}
-        </div>
         <Link href="/about" className={styles.navLink}>About</Link>
         <Link href="/contact" className={styles.navLink}>Contact</Link>
-        <Link href="/shop" className={styles.navLink}>Shop</Link>
       </div>
       <div className={styles.navRight}>
         <button className={styles.locationBtn}>
