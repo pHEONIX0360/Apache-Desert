@@ -77,7 +77,7 @@ export default function SignIn() {
       }
       router.push('/dashboard');
     } catch (error) {
-      setError('Authentication failed. Please try again.');
+      // setError('Authentication failed. Please try again.'); // This line was removed
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +158,7 @@ export default function SignIn() {
                     />
                     <label>Password</label>
                   </div>
-                  {error && <p className={styles.error}>{error}</p>}
+                  {/* {error && <p className={styles.error}>{error}</p>} */}
                   <button type="submit" className={styles.signBtn} disabled={isSubmitting}>
                     {isSubmitting ? 'Signing Up...' : 'Sign Up'}
                   </button>
@@ -222,7 +222,7 @@ export default function SignIn() {
                     />
                     <label>Password</label>
                   </div>
-                  {error && <p className={styles.error}>{error}</p>}
+                  {/* {error && <p className={styles.error}>{error}</p>} */}
                   <button type="submit" className={styles.signBtn} disabled={isSubmitting}>
                     {isSubmitting ? 'Signing In...' : 'Sign In'}
                   </button>
