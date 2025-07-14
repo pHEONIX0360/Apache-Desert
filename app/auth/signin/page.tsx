@@ -53,7 +53,6 @@ export default function SignIn() {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError('');
   };
 
   const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -69,7 +68,6 @@ export default function SignIn() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
 
     try {
       if (isSignUpMode) {
