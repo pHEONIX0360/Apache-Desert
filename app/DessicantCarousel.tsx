@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 const images = [
-  "./Images/Dessicant.jpg",
+  "/Images/Dessicant.jpg",
   "/Images/Dessicant Packets.jpg",
   "/Images/Desiccant-Silica-Gel.jpg"
 ];
@@ -21,17 +22,23 @@ export default function DessicantCarousel() {
   return (
     <div className={styles.carouselContainer}>
       {images.map((src, i) => (
-        <img
+        <div
           key={src}
-          src={src}
-          alt={`Dessicant ${i + 1}`}
-          className={
-            i === index
-              ? `${styles.carouselImage} ${styles.carouselImageActive}`
-              : styles.carouselImage
-          }
           style={{ display: i === index ? "block" : "none" }}
-        />
+        >
+          <Image
+            src={src}
+            alt={`Dessicant ${i + 1}`}
+            width={400}
+            height={300}
+            className={
+              i === index
+                ? `${styles.carouselImage} ${styles.carouselImageActive}`
+                : styles.carouselImage
+            }
+            priority={i === 0}
+          />
+        </div>
       ))}
     </div>
   );

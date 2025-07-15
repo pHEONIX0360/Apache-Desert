@@ -31,7 +31,7 @@ export default function Dashboard() {
     <div className={styles.dashboard}>
       <div className={styles.header}>
         <h1>Welcome to Your Dashboard</h1>
-        <p>Hello, {user?.name}! Here's your personalized dashboard.</p>
+        <p>Hello, {user?.name}! Here&apos;s your personalized dashboard.</p>
       </div>
 
       <div className={styles.content}>
