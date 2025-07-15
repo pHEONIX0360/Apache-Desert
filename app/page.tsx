@@ -6,24 +6,28 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    chatbase?: unknown;
+    chatbase?: {
+      (...args: unknown[]): void;
+      q?: unknown[];
+      [key: string]: unknown;
+    };
   }
 }
 
 export default function Home() {
   useEffect(() => {
-    if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-      window.chatbase = (...args: unknown[]) => {
-        if (!window.chatbase.q) window.chatbase.q = [];
-        window.chatbase.q.push(args);
-      };
-      window.chatbase = new Proxy(window.chatbase, {
-        get(target, prop) {
-          if (prop === "q") return target.q;
-          return (...args: unknown[]) => target(prop, ...args);
-        },
-      });
-    }
+    // if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+    //   window.chatbase = (...args: unknown[]) => {
+    //     if (!window.chatbase!.q) window.chatbase!.q = [];
+    //     window.chatbase!.q.push(args);
+    //   };
+    //   window.chatbase = new Proxy(window.chatbase, {
+    //     get(target, prop) {
+    //       if (prop === "q") return target.q;
+    //       return (...args: unknown[]) => (target as (...args: unknown[]) => unknown)(prop, ...args);
+    //     },
+    //   });
+    // }
     const onLoad = function () {
       const script = document.createElement("script");
       script.src = "https://www.chatbase.co/embed.min.js";
