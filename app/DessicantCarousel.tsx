@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 const images = [
   "./Images/Dessicant.jpg",
@@ -21,10 +22,12 @@ export default function DessicantCarousel() {
   return (
     <div className={styles.carouselContainer}>
       {images.map((src, i) => (
-        <img
+        <Image
           key={src}
           src={src}
           alt={`Dessicant ${i + 1}`}
+          width={400}
+          height={300}
           className={
             i === index
               ? `${styles.carouselImage} ${styles.carouselImageActive}`

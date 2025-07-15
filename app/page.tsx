@@ -1,8 +1,8 @@
 "use client";
 import styles from "./page.module.css";
 import NewsletterForm from "./NewsletterForm";
-import Link from "next/link";
 import { useEffect } from "react";
+import Image from "next/image";
 
 declare global {
   interface Window {
@@ -16,18 +16,6 @@ declare global {
 
 export default function Home() {
   useEffect(() => {
-    // if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-    //   window.chatbase = (...args: unknown[]) => {
-    //     if (!window.chatbase!.q) window.chatbase!.q = [];
-    //     window.chatbase!.q.push(args);
-    //   };
-    //   window.chatbase = new Proxy(window.chatbase, {
-    //     get(target, prop) {
-    //       if (prop === "q") return target.q;
-    //       return (...args: unknown[]) => (target as (...args: unknown[]) => unknown)(prop, ...args);
-    //     },
-    //   });
-    // }
     const onLoad = function () {
       const script = document.createElement("script");
       script.src = "https://www.chatbase.co/embed.min.js";
@@ -48,7 +36,7 @@ export default function Home() {
       <div className={styles.landingContainer}>
         <video
           className={styles.backgroundVideo}
-          src="/video/WhatsApp Video 2025-05-19 at 10.49.19_7458dc24.mp4"
+          src="/video/Apache Helicopter Video.mp4"
           autoPlay
           loop
           muted
@@ -61,10 +49,10 @@ export default function Home() {
               Shop high-quality moisture absorbers for packaging, electronics, pharmaceuticals, and more.
             </p>
             <div className={styles.heroCtas}>
-              <button className={styles.primaryCta}>Shop Now</button>
-              <Link href="/products" className={styles.secondaryCta}>
+              <button className={styles.primaryCta} disabled>Shop Now</button>
+              <button className={styles.secondaryCta} disabled>
                 Explore Products
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -76,21 +64,17 @@ export default function Home() {
           <div className={styles.aboutAccentIcon}>★</div>
           <h2 className={styles.aboutHeadline}>About Us</h2>
           <div className={styles.aboutRow}>
-            <img
-              src="/Images/images (1).png"
-              alt="Animated Man 1"
-              className={styles.aboutImage}
-            />
+            <div style={{ width: 100, height: 100, borderRadius: '50%', background: '#B29C6A22', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginRight: 24 }}>
+              <Image src="/Images/Screenshot 2025-07-14 124127.png" alt="Anthony Healy" width={100} height={100} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+            </div>
             <div className={styles.aboutText}>
               <p>
                 This company is a proud <b>veteran owned</b>, dedicated to delivering top-quality silica products with excellence, reliability, and service. Our mission is to serve our customers with the integrity and commitment that defines our veteran roots.
               </p>
             </div>
-            <img
-              src="/Images/images (1).png"
-              alt="Animated Man 2"
-              className={styles.aboutImage}
-            />
+            <div style={{ width: 100, height: 100, borderRadius: '50%', background: '#B29C6A22', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginLeft: 24 }}>
+              <Image src="/Images/Screenshot 2025-07-14 124137.png" alt="Scott Springer" width={100} height={100} style={{ objectFit: 'cover', borderRadius: '50%' }} />
+            </div>
           </div>
         </div>
       </section>
@@ -100,21 +84,18 @@ export default function Home() {
         <h2 className={styles.sectionHeadline}>Featured Products</h2>
         <div className={styles.productsGrid}>
           <div className={styles.productCard}>
-            <img src="/Images/silica.webp" alt="Silica Gel Packets" />
+            <Image src="/Images/silica.webp" alt="Silica Gel Packets" width={200} height={150} />
             <h3>Silica Gel Packets</h3>
-            <p>$9.99 / 100pcs</p>
             <button className={styles.productButton}>View Product</button>
           </div>
           <div className={styles.productCard}>
-            <img src="/Images/bag.webp" alt="Clay Desiccant Bags" />
+            <Image src="/Images/bag.webp" alt="Clay Desiccant Bags" width={200} height={150} />
             <h3>Clay Desiccant Bags</h3>
-            <p>$12.99 / 50pcs</p>
             <button className={styles.productButton}>View Product</button>
           </div>
           <div className={styles.productCard}>
-            <img src="/Images/5g-Odor-Moisture-Absorbing-Packets-Activated-Charcoal-Montmorillonite-Clay-Desiccant.avif" alt="Activated Carbon Desiccant" />
+            <Image src="/Images/5g-Odor-Moisture-Absorbing-Packets-Activated-Charcoal-Montmorillonite-Clay-Desiccant.avif" alt="Activated Carbon Desiccant" width={200} height={150} />
             <h3>Activated Carbon Desiccant</h3>
-            <p>$14.99 / 50pcs</p>
             <button className={styles.productButton}>View Product</button>
           </div>
         </div>
@@ -186,8 +167,8 @@ export default function Home() {
           <div className={styles.footerColumn}>
             <h4>Contact</h4>
             <ul>
-              <li>Email: <a href="mailto:info@desertsolutions.com">info@desertsolutions.com</a></li>
-              <li>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+              <li>Email: <a href="mailto:sales@apachedesert.com">sales@apachedesert.com</a></li>
+              <li>Phone: <a href="tel:+18478942883">(847) 894-2883</a></li>
               <li>Location: USA</li>
             </ul>
           </div>
@@ -204,13 +185,13 @@ export default function Home() {
             <NewsletterForm />
             <div className={styles.socialIcons}>
               <a href="#" aria-label="Facebook" title="Facebook">
-                <img src="./Images/download.png" alt="Facebook" />
+                <Image src="/Images/download.png" alt="Facebook" width={28} height={28} />
               </a>
               <a href="#" aria-label="LinkedIn" title="LinkedIn">
-                <img src="./Images/hd-vector-flat-linkedin-in-round-icon-png-701751695046390m4phkuuiqm.png" alt="LinkedIn" />
+                <Image src="/Images/hd-vector-flat-linkedin-in-round-icon-png-701751695046390m4phkuuiqm.png" alt="LinkedIn" width={28} height={28} />
               </a>
               <a href="#" aria-label="YouTube" title="YouTube">
-                <img src="./Images/images.png" alt="YouTube" />
+                <Image src="/Images/images.png" alt="YouTube" width={28} height={28} />
               </a>
             </div>
           </div>
