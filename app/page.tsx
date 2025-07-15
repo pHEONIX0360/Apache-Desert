@@ -92,6 +92,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
+      {/*
       <section className={styles.productsSection}>
         <h2 className={styles.sectionHeadline}>Featured Products</h2>
         <div className={styles.productsGrid}>
@@ -112,8 +113,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* How It Works Section */}
+      {/*
       <section className={styles.howItWorksSection}>
         <h2 className={styles.sectionHeadline}>How It Works</h2>
         <div className={styles.stepsGrid}>
@@ -135,8 +138,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Industries Served Section */}
+      {/*
       <section className={styles.industriesSection}>
         <h2 className={styles.sectionHeadline}>Industries We Serve</h2>
         <div className={styles.industriesGrid}>
@@ -147,8 +152,10 @@ export default function Home() {
           <div className={styles.industryCard}><span role="img" aria-label="Shipping">📦</span> Industrial Shipping</div>
         </div>
       </section>
+      */}
 
       {/* Testimonials Section */}
+      {/*
       <section className={styles.testimonialsSection}>
         <h2 className={styles.sectionHeadline}>Customer Testimonials</h2>
         <div className={styles.testimonialsGrid}>
@@ -162,6 +169,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Footer Section */}
       <footer className={styles.footer}>
