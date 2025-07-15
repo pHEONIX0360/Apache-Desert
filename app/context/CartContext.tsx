@@ -23,17 +23,17 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<unknown[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
     setCart(prev => {
       // If same product (by name) and loadType exists, update quantity
       const idx = prev.findIndex(
-        i => i.product.name === item.product.name && i.loadType === item.loadType
+        i => i.product && (i.product as { name: string }).name === (item.product as { name: string }).name && i.loadType === item.loadType
       );
       if (idx > -1) {
         const updated = [...prev];
-        updated[idx].quantity += item.quantity;
+        (updated[idx] as CartItem).quantity += item.quantity;
         return updated;
       }
       return [...prev, item];

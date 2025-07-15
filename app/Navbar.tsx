@@ -84,7 +84,7 @@ export default function Navbar() {
                 <ul className={styles.cartList}>
                   {cart.map((item, idx) => (
                     <li key={idx} className={styles.cartItem}>
-                      <span>{item.product.name} ({item.loadType})</span>
+                      <span>{(item.product as { name: string }).name} ({item.loadType})</span>
                       <span>Qty: {item.quantity}</span>
                       <button onClick={() => removeFromCart(idx)} className={styles.removeBtn}>Remove</button>
                     </li>
