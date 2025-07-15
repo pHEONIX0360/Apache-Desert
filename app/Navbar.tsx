@@ -1,16 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useAuth } from "./context/AuthContext";
-import { useCart } from "./context/CartContext";
 
 export default function Navbar() {
-  const [location, setLocation] = useState("Select Location");
-  const { user, isAuthenticated, logout } = useAuth();
-  const { cart, removeFromCart, clearCart } = useCart();
-  const [cartOpen, setCartOpen] = useState(false);
+  // Navigation bar with location, cart, and login hidden
 
   useEffect(() => {
     if (typeof window !== "undefined" && "geolocation" in navigator) {
@@ -22,18 +17,20 @@ export default function Navbar() {
           );
           const data = await res.json();
           if (data && data.address) {
-            setLocation(
-              data.address.city ||
-              data.address.town ||
-              data.address.village ||
-              data.address.state ||
-              data.display_name
-            );
+            // setLocation(
+            //   data.address.city ||
+            //   data.address.town ||
+            //   data.address.village ||
+            //   data.address.state ||
+            //   data.display_name
+            // );
           }
         } catch {
-          setLocation("Location Unavailable");
+          // setLocation("Location Unavailable");
         }
-      }, () => setLocation("Location Unavailable"));
+      }, () => {
+        // setLocation("Location Unavailable");
+      });
     }
   }, []);
 
@@ -49,6 +46,7 @@ export default function Navbar() {
         <Link href="/contact" className={styles.navLink}>Contact</Link>
       </div>
       <div className={styles.navRight}>
+        {/*
         <button className={styles.locationBtn}>
           <span className={styles.locationIcon}>📍</span>
           <span className={styles.locationText}>{location}</span>
@@ -67,7 +65,7 @@ export default function Navbar() {
                 <ul className={styles.cartList}>
                   {cart.map((item, idx) => (
                     <li key={idx} className={styles.cartItem}>
-                      <span>{item.product.name} ({item.loadType})</span>
+                      <span>{(item.product as { name: string }).name} ({item.loadType})</span>
                       <span>Qty: {item.quantity}</span>
                       <button onClick={() => removeFromCart(idx)} className={styles.removeBtn}>Remove</button>
                     </li>
@@ -108,6 +106,7 @@ export default function Navbar() {
             <span>Login</span>
           </Link>
         )}
+        */}
       </div>
     </nav>
   );
