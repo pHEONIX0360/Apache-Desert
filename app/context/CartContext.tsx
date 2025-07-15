@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 export interface CartItem {
-  product: any; // You can type this more strictly if you have a Product type
+  product: unknown; // You can type this more strictly if you have a Product type
   quantity: number;
   loadType: "case" | "pallet" | "truck";
 }
