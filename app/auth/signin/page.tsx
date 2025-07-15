@@ -18,30 +18,6 @@ export default function SignIn() {
   const { login, signup, isAuthenticated } = useAuth();
   const router = useRouter();
 
-  const images = [
-    "/Images/Logo 1.png",
-    "/Images/Logo 7.png", 
-    "/Images/Logo 1.png"
-  ];
-
-  const colors = ["#ebf70a", "#f9cb9c", "#dc9d1e", "#9ACD32"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  useEffect(() => {
-    const colorInterval = setInterval(() => {
-      setCurrentColorIndex((prev) => (prev + 1) % colors.length);
-    }, 10000);
-
-    return () => clearInterval(colorInterval);
-  }, [colors.length]);
-
   useEffect(() => {
     if (isAuthenticated) {
       router.push('/dashboard');
@@ -76,7 +52,7 @@ export default function SignIn() {
         await login(formData.email, formData.password);
       }
       router.push('/dashboard');
-    } catch (error) {
+    } catch {
       // setError('Authentication failed. Please try again.'); // This line was removed
     } finally {
       setIsSubmitting(false);
@@ -100,7 +76,7 @@ export default function SignIn() {
                   />
                 </div>
                 <div className={styles.heading}>
-                  <h2>Let's Get Started!</h2>
+                  <h2>Let&apos;s Get Started!</h2>
                   <h6>Already have an account?</h6>
                   <button 
                     type="button" 
@@ -158,7 +134,6 @@ export default function SignIn() {
                     />
                     <label>Password</label>
                   </div>
-                  {/* {error && <p className={styles.error}>{error}</p>} */}
                   <button type="submit" className={styles.signBtn} disabled={isSubmitting}>
                     {isSubmitting ? 'Signing Up...' : 'Sign Up'}
                   </button>
@@ -192,19 +167,18 @@ export default function SignIn() {
                 <div className={styles.actualForm}>
                   <div className={styles.inputWrap}>
                     <input 
-                      type="text" 
-                      name="name"
-                      minLength={4} 
+                      type="email" 
+                      name="email"
                       autoComplete="off" 
                       required 
                       className={styles.inputField}
-                      value={formData.name}
+                      value={formData.email}
                       onChange={handleInputChange}
                       onFocus={handleInputFocus}
                       onBlur={handleInputBlur}
                       placeholder=" "
                     />
-                    <label>Name</label>
+                    <label>Email</label>
                   </div>
                   <div className={styles.inputWrap}>
                     <input 
@@ -222,7 +196,6 @@ export default function SignIn() {
                     />
                     <label>Password</label>
                   </div>
-                  {/* {error && <p className={styles.error}>{error}</p>} */}
                   <button type="submit" className={styles.signBtn} disabled={isSubmitting}>
                     {isSubmitting ? 'Signing In...' : 'Sign In'}
                   </button>

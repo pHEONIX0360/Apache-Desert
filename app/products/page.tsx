@@ -365,7 +365,7 @@ export default function ProductsPage() {
               
               return (
                 <div className={styles.card} key={idx}>
-                  <img src="/Images/Desiccant-Silica-Gel.jpg" alt={product.name} className={styles.productImg} />
+                  <Image src="/Images/Desiccant-Silica-Gel.jpg" alt={product.name} className={styles.productImg} width={300} height={200} />
                   <div className={styles.productInfo}>
                     <h2 className={styles.productName}>{product.name}</h2>
                     <div className={styles.qualityBadge}>

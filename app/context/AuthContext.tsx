@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  updateProfile
 } from 'firebase/auth';
 
 interface User {
@@ -67,11 +69,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const signup = async (name: string) => {
+  const signup = async (name: string, email: string, password: string) => {
     setLoading(true);
     try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       if (auth.currentUser) {
-        await auth.currentUser.updateProfile({ displayName: name });
+        await updateProfile(auth.currentUser, { displayName: name });
         setUser({
           id: auth.currentUser.uid,
           name: name,
