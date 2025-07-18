@@ -191,13 +191,13 @@ export default function Home() {
             <NewsletterForm />
             <div className={styles.socialIcons}>
               <a href="#" aria-label="Facebook" title="Facebook">
-                <img src="./Images/download.png" alt="Facebook" />
+                <Image src="/Images/download.png" alt="Facebook" width={28} height={28} />
               </a>
               <a href="#" aria-label="LinkedIn" title="LinkedIn">
-                <img src="./Images/hd-vector-flat-linkedin-in-round-icon-png-701751695046390m4phkuuiqm.png" alt="LinkedIn" />
+                <Image src="/Images/hd-vector-flat-linkedin-in-round-icon-png-701751695046390m4phkuuiqm.png" alt="LinkedIn" width={28} height={28} />
               </a>
               <a href="#" aria-label="YouTube" title="YouTube">
-                <img src="./Images/images.png" alt="YouTube" />
+                <Image src="/Images/images.png" alt="YouTube" width={28} height={28} />
               </a>
             </div>
           </div>

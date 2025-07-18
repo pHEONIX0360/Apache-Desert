@@ -9,7 +9,7 @@ export default function ThankYou() {
         <div className={styles.contactIcon}>✅</div>
         <h1 className={styles.contactHeadline}>Thank You!</h1>
         <p className={styles.contactText}>
-          Your message has been sent successfully. We'll get back to you soon!
+          Your message has been sent successfully. We&apos;ll get back to you soon!
         </p>
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <Link href="/" className={styles.submitButton} style={{ display: 'inline-block', textDecoration: 'none' }}>
