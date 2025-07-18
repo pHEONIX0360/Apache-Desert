@@ -38,10 +38,11 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navLeft}>
         <Link href="/">
-          <Image src="/Images/Logo 1.png" alt="Logo" width={48} height={48} className={styles.logo} />
+          <Image src="/Images/Tan Background.jpg" alt="Logo" width={48} height={48} className={styles.logo} />
         </Link>
       </div>
       <div className={styles.navCenter}>
+        <Link href="/" className={styles.navLink}>Home</Link>
         <Link href="/about" className={styles.navLink}>About</Link>
         <Link href="/contact" className={styles.navLink}>Contact</Link>
       </div>

@@ -5,7 +5,10 @@ export default function About() {
   return (
     <section className={styles.aboutSection} style={{ background: '#fff', minHeight: '100vh', padding: '48px 0' }}>
       <div className={styles.aboutCard} style={{ maxWidth: 900, margin: '0 auto', background: '#fff', borderRadius: '2rem', boxShadow: '0 6px 32px rgba(84,94,60,0.10)', border: '1.5px solid #B29C6A', padding: '2.5rem 2rem' }}>
-        <h1 className={styles.aboutHeadline} style={{ color: '#545E3C', fontSize: '2.5rem', fontWeight: 800, textAlign: 'center', marginBottom: 24 }}>About Us</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <Image src="/Images/Screenshot 2025-07-18 114657.png" alt="AJ in front of his Apache" width={80} height={80} style={{ borderRadius: '50%' }} />
+          <h1 className={styles.aboutHeadline} style={{ color: '#545E3C', fontSize: '2.5rem', fontWeight: 800, textAlign: 'center', marginBottom: 24 }}>About Us</h1>
+        </div>
         <h2 style={{ color: '#A1A155', fontWeight: 700, fontSize: '1.5rem', marginBottom: 12, textAlign: 'center' }}>Premium Desiccants Without the Premium Price</h2>
         <p style={{ color: '#545E3C', fontSize: '1.15rem', marginBottom: 24, textAlign: 'center', fontWeight: 500 }}>
           Founded in 2025, Apache Desert is a veteran-owned and operated supplier of high-quality desiccants, proudly serving a variety of industries. Our mission is simple: deliver premium moisture control solutions with exceptional service and unmatched value.
