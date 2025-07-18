@@ -60,12 +60,6 @@ export default function Home() {
             <p className={styles.heroSubheadline}>
               Shop high-quality moisture absorbers for packaging, electronics, pharmaceuticals, and more.
             </p>
-            <div className={styles.heroCtas}>
-              <button className={styles.primaryCta} disabled>Shop Now</button>
-              <button className={styles.secondaryCta} disabled>
-                Explore Products
-              </button>
-            </div>
           </div>
         </div>
       </div>
