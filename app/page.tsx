@@ -81,7 +81,7 @@ export default function Home() {
             </div>
             <div className={styles.aboutText}>
               <p>
-                This company is a proud <b>veteran owned</b>, dedicated to delivering top-quality silica products with excellence, reliability, and service. Our mission is to serve our customers with the integrity and commitment that defines our veteran roots.
+                Apache Desert is a proud Veteran Owned company. We are dedicated to delivering top-quality silica products with excellence, reliability, and service. Our mission is to serve our customer with integrity and commitment that defines our Veteran roots.
               </p>
             </div>
             <div style={{ width: 100, height: 100, borderRadius: '50%', background: '#B29C6A22', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginLeft: 24 }}>

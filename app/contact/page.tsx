@@ -86,8 +86,8 @@ export default function Contact() {
         <div className={styles.contactInfo}>
           <p className={styles.contactNote}>
             You can also reach us directly at:{" "}
-            <a href="mailto:joesonstanes1360@gmail.com" className={styles.contactEmail}>
-              joesonstanes1360@gmail.com
+            <a href="mailto:sales@apachedesert.com" className={styles.contactEmail}>
+              sales@apachedesert.com
             </a>
           </p>
           <p className={styles.contactNote}>
