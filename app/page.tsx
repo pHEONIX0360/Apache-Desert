@@ -46,6 +46,9 @@ export default function Home() {
     <>
       {/* Hero Section with Video Background */}
       <div className={styles.landingContainer}>
+        <div style={{ position: 'absolute', top: 20, left: 20, zIndex: 10 }}>
+          <Image src="/Images/Tan Background.jpg" alt="Logo" width={120} height={120} style={{ borderRadius: '8px' }} />
+        </div>
         <video
           className={styles.backgroundVideo}
           src="/video/Apache Helicopter Video.mp4"
@@ -173,9 +176,6 @@ export default function Home() {
             <ul>
               <li><a href="#about">About Us</a></li>
               <li><a href="#contact">Contact</a></li>
-              <li><a href="#faq">FAQs</a></li>
-              <li><a href="#terms">Terms of Service</a></li>
-              <li><a href="#privacy">Privacy Policy</a></li>
             </ul>
           </div>
           <div className={styles.footerColumn}>
@@ -184,14 +184,6 @@ export default function Home() {
               <li>Email: <a href="mailto:sales@apachedesert.com">sales@apachedesert.com</a></li>
               <li>Phone: <a href="tel:+18478942883">(847) 894-2883</a></li>
               <li>Location: USA</li>
-            </ul>
-          </div>
-          <div className={styles.footerColumn}>
-            <h4>Resources</h4>
-            <ul>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#support">Support</a></li>
-              <li><a href="#newsletter">Newsletter</a></li>
             </ul>
           </div>
           <div className={styles.footerColumn}>

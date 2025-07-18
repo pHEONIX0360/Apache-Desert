@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import styles from "./page.module.css";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -36,11 +35,6 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.navLeft}>
-        <Link href="/">
-          <Image src="/Images/Tan Background.jpg" alt="Logo" width={48} height={48} className={styles.logo} />
-        </Link>
-      </div>
       <div className={styles.navCenter}>
         <Link href="/" className={styles.navLink}>Home</Link>
         <Link href="/about" className={styles.navLink}>About</Link>

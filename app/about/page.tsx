@@ -5,9 +5,9 @@ export default function About() {
   return (
     <section className={styles.aboutSection} style={{ background: '#fff', minHeight: '100vh', padding: '48px 0' }}>
       <div className={styles.aboutCard} style={{ maxWidth: 900, margin: '0 auto', background: '#fff', borderRadius: '2rem', boxShadow: '0 6px 32px rgba(84,94,60,0.10)', border: '1.5px solid #B29C6A', padding: '2.5rem 2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Image src="/Images/Screenshot 2025-07-18 114657.png" alt="AJ in front of his Apache" width={80} height={80} style={{ borderRadius: '50%' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
           <h1 className={styles.aboutHeadline} style={{ color: '#545E3C', fontSize: '2.5rem', fontWeight: 800, textAlign: 'center', marginBottom: 24 }}>About Us</h1>
+          <Image src="/Images/Screenshot 2025-07-18 114657.png" alt="AJ in front of his Apache" width={480} height={480} style={{ borderRadius: '8px', objectFit: 'cover' }} />
         </div>
         <h2 style={{ color: '#A1A155', fontWeight: 700, fontSize: '1.5rem', marginBottom: 12, textAlign: 'center' }}>Premium Desiccants Without the Premium Price</h2>
         <p style={{ color: '#545E3C', fontSize: '1.15rem', marginBottom: 24, textAlign: 'center', fontWeight: 500 }}>
