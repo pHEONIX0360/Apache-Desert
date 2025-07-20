@@ -27,7 +27,8 @@ export default function Contact() {
           className={styles.contactForm}
         >
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://apachedesert.com/contact/thank-you" />
+          <input type="hidden" name="_next" value="https://www.apachedesert.com/contact/thank-you" />
+          <input type="hidden" name="_subject" value="New Contact Form Submission" />
 
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.formLabel}>Email *</label>
